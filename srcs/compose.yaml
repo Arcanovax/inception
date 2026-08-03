@@ -1,3 +1,9 @@
 services:
   mariadb:
     build: ./requirements/mariadb
+
+    volumes:
+      - db_data:/home/mthetcha/data/mysql
+
+volumes:
+  db_data:
