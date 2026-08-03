@@ -1,7 +1,9 @@
 services:
   mariadb:
     build: ./requirements/mariadb
-
+    container_name : mariadb
+    ports:
+      - "3306:3306"
     volumes:
       - db_data:/home/mthetcha/data/mysql
 
