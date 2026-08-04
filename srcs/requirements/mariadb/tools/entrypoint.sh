@@ -1,6 +1,13 @@
 mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 
-mariadb-install-db --user=mysql --datadir="/run/mysql"
+DATADIR="/var/lib/mysql"
+mkdir -p "$DATADIR"
+chown mysql:mysql "$DATADIR"
 
-exec mariadbd --user=mysql --console
+if [ ! -d "$DATADIR/mysql" ]; then
+    echo "Init of Mariadb"
+    mariadb-install-db --user=mysql --datadir="$DATADIR"
+fi
+
+exec mariadbd --user=mysql --datadir="$DATADIR" --console
