@@ -5,7 +5,15 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/home/mthetcha/data/mysql
+      - mariadb:/var/lib/mysql
+
+
 
 volumes:
-  db_data:
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mthetcha/data/mariadb

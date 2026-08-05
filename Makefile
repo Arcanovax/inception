@@ -1,3 +1,5 @@
+VOLUMES = /home/mthetcha/data/mariadb /home/mthetcha/data/wordpress
+
 kvm:
 	qemu-system-x86_64 \
 	-enable-kvm \
@@ -12,3 +14,12 @@ kvm:
 
 ssh:
 	ssh -p 2222 mthetcha@127.0.0.1
+
+
+
+
+volumes:
+	mkdir -p $(VOLUMES)
+
+up: volumes
+	docker compose -f srcs/compose.yaml up -d
