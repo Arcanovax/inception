@@ -16,10 +16,8 @@ ssh:
 	ssh -p 2222 mthetcha@127.0.0.1
 
 
-
+up: volumes
+	docker compose -f srcs/compose.yaml up -d
 
 volumes:
 	mkdir -p $(VOLUMES)
-
-up: volumes
-	docker compose -f srcs/compose.yaml up -d
