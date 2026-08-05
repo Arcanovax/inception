@@ -21,3 +21,15 @@ up: volumes
 
 volumes:
 	mkdir -p $(VOLUMES)
+
+down :
+	docker compose -f ./srcs/compose.yaml down
+
+clean:
+	docker compose -f ./srcs/compose.yaml down -v
+
+fclean: clean
+	-docker rmi -f $$(docker images -qa) 2>/dev/null || true
+	-docker system prune -a --volumes -f 2>/dev/null || true
+	sudo rm -rf /home/mthetcha/data/mariadb
+	sudo rm -rf /home/mthetcha/data/wordpress
