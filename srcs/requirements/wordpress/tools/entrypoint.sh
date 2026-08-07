@@ -4,7 +4,18 @@ chown -R www-data:www-data /var/www/html
 echo "Starting INIT WordPress..."
 echo "$DB_NAME"
 echo "$DB_USER"
-echo "$DB_USER_PASSWORD"
+echo "$DB_PASSWORD"
+
+
+mkdir -p /etc/mysql/mariadb.conf.d
+cat > /etc/mysql/mariadb.conf.d/docker.cnf << EOF
+[mysqld]
+bind-address=0.0.0.0
+port=3306
+datadir=/var/lib/mysql
+socket=/run/mysqld/mysqld.sock
+skip-networking=0
+EOF
 
 if [ ! -f wp-config.php ]; then
     echo "Config WordPress..."
@@ -26,6 +37,7 @@ if ! wp core is-installed --allow-root; then
     --admin_email="$WP_ADMIN_EMAIL"  \
     --skip-email \
     --allow-root
+fi
 
 echo "Starting WordPress..."
 exec /usr/sbin/php-fpm8.2 -F
