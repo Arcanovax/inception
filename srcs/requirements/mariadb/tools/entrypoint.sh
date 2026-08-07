@@ -6,6 +6,16 @@ DATADIR="/var/lib/mysql"
 mkdir -p "$DATADIR"
 chown mysql:mysql "$DATADIR"
 
+mkdir -p /etc/mysql/mariadb.conf.d
+cat > /etc/mysql/mariadb.conf.d/docker.cnf << EOF
+[mysqld]
+bind-address=0.0.0.0
+port=3306
+datadir=/var/lib/mysql
+socket=/run/mysqld/mysqld.sock
+skip-networking=0
+EOF
+
 if [ ! -d "$DATADIR/mysql" ]; then
     echo "Init MariaDB table system..."
     mariadb-install-db --user=mysql --datadir="$DATADIR"
