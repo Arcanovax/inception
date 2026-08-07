@@ -19,6 +19,9 @@ ssh:
 up: volumes
 	docker compose -f srcs/compose.yaml up -d
 
+build: volumes
+	docker compose -f srcs/compose.yaml up --build -d
+
 volumes:
 	mkdir -p $(VOLUMES)
 

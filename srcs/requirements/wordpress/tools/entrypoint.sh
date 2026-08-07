@@ -1,13 +1,31 @@
+#!/bin/sh
 mkdir -p /run/wordpress
-chown wordpress:wordpress /run/wordpress
+chown -R www-data:www-data /var/www/html
+echo "Starting INIT WordPress..."
+echo "$DB_NAME"
+echo "$DB_USER"
+echo "$DB_USER_PASSWORD"
 
-DATADIR="/var/lib/wordpress"
-mkdir -p "$DATADIR"
-chown wordpress:wordpress "$DATADIR"
-
-if [ ! -d "$DATADIR/wordpress" ]; then
-    echo "Init of wordpress"
-    # mariadb-install-db --user=mysql --datadir="$DATADIR"
+if [ ! -f wp-config.php ]; then
+    echo "Config WordPress..."
+    wp config create \
+        --dbname="$DB_NAME" \
+        --dbuser="$DB_USER" \
+        --dbpass="$DB_PASSWORD" \
+        --dbhost="mariadb:3306" \
+        --allow-root
 fi
 
-# exec mariadbd --user=mysql --datadir="$DATADIR" --console
+if ! wp core is-installed --allow-root; then
+    echo "Installing WordPress..."
+    wp core install \
+    --url="$DOMAIN_NAME" \
+    --title="$WP_TITLE" \
+    --admin_user="$WP_ADMIN_USER" \
+    --admin_password="$WP_ADMIN_PASSWORD" \
+    --admin_email="$WP_ADMIN_EMAIL"  \
+    --skip-email \
+    --allow-root
+
+echo "Starting WordPress..."
+exec /usr/sbin/php-fpm8.2 -F

@@ -11,6 +11,24 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
 
+  wordpress:
+    build: ./requirements/wordpress
+    container_name : wordpress
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - mariadb
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USER_PASSWORD=${DB_USER_PASSWORD}
+      - WP_TITLE=${WP_TITLE}
+      - WP_ADMIN_USER=${WP_ADMIN_USER}
+      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
+      - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+
 
 
 volumes:
@@ -21,3 +39,11 @@ volumes:
       type: none
       o: bind
       device: /home/mthetcha/data/mariadb
+      
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mthetcha/data/wordpress
