@@ -15,3 +15,7 @@ https://developer.wordpress.org/cli/commands/core/install/
 install nginx
 https://blog.stephane-robert.info/docs/services/web/nginx/
 https://www.virtua.cloud/learn/fr/tutorials/installer-nginx-debian-ubuntu
+
+https://blog.nginx.org/blog/9-tips-for-improving-wordpress-performance-with-nginx
+https://debian-facile.org/atelier:chantier:nginx-mariabd-php-multi-sites-dont-wordpress-plusieurs-versions-de-php
+https://www.ionos.com/digitalguide/hosting/blogs/wordpress-nginx/

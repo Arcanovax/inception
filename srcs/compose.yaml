@@ -11,6 +11,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
 
+
   wordpress:
     build: ./requirements/wordpress
     container_name : wordpress
@@ -27,10 +28,20 @@ services:
       - WP_ADMIN_USER=${WP_ADMIN_USER}
       - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
       - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+    networks:
+      - inception
 
   nginx:
     build: ./requirements/nginx
     container_name : nginx
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+
+networks:
+  inception:
+      name: inception
 
 
 volumes:
