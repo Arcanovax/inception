@@ -14,3 +14,4 @@ https://developer.wordpress.org/cli/commands/core/install/
 
 install nginx
 https://blog.stephane-robert.info/docs/services/web/nginx/
+https://www.virtua.cloud/learn/fr/tutorials/installer-nginx-debian-ubuntu
