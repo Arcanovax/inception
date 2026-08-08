@@ -1,19 +1,22 @@
 #!/bin/sh
 mkdir -p /run/wordpress
 chown -R www-data:www-data /var/www/html
-echo "Starting INIT WordPress..."
-echo "$DB_NAME"
-echo "$DB_USER"
-echo "$DB_USER_PASSWORD"
+
+until mysql -h mariadb -u$DB_USER -p$DB_PASSWORD -e "SELECT 1" > /dev/null 2>&1; do
+	echo "Waiting MariaDB..."
+    sleep 2
+done
 
 if [ ! -f wp-config.php ]; then
-    echo "Config WordPress..."
+    echo "Creating a WordPress Configuration..."
     wp config create \
         --dbname="$DB_NAME" \
         --dbuser="$DB_USER" \
-        --dbpass="$DB_USER_PASSWORD" \
+        --dbpass="$DB_PASSWORD" \
         --dbhost="mariadb:3306" \
         --allow-root
+else
+	echo "WordPress configuration found"
 fi
 
 if ! wp core is-installed --allow-root; then
@@ -26,6 +29,8 @@ if ! wp core is-installed --allow-root; then
     --admin_email="$WP_ADMIN_EMAIL"  \
     --skip-email \
     --allow-root
+else
+	echo "WordPress is already installed"
 fi
 
 echo "Starting WordPress..."

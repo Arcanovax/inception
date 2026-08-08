@@ -23,7 +23,6 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_USER_PASSWORD=${DB_USER_PASSWORD}
       - WP_TITLE=${WP_TITLE}
       - WP_ADMIN_USER=${WP_ADMIN_USER}
       - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
@@ -39,7 +38,7 @@ volumes:
       type: none
       o: bind
       device: /home/mthetcha/data/mariadb
-      
+
   wordpress:
     name: wordpress
     driver: local

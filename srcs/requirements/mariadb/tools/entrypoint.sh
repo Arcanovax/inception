@@ -17,13 +17,15 @@ skip-networking=0
 EOF
 
 if [ ! -d "$DATADIR/mysql" ]; then
-    echo "Init MariaDB table system..."
+    echo "Initializing MariaDB table system..."
     mariadb-install-db --user=mysql --datadir="$DATADIR"
+else
+	echo "MariaDB table system found"
 fi
 
 
 if [ ! -f "$DATADIR/.db_initialized" ]; then
-	echo "Init MariaDB Inception table..."
+	echo "Initializing MariaDB Inception table..."
 
     mariadbd --user=mysql --datadir="$DATADIR" --skip-networking=0 &
     pid=$!
@@ -47,7 +49,7 @@ if [ ! -f "$DATADIR/.db_initialized" ]; then
 
     touch "$DATADIR/.db_initialized"
 else
-	echo "Db already created"
+	echo "Database inception found"
 fi
 
 echo "Starting MariaDB..."
