@@ -11,7 +11,7 @@ RUN mkdir -p /etc/nginx/ssl && \
 
 RUN rm /etc/nginx/sites-enabled/default
 
-COPY ./tools/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./tools/nginx.conf /etc/nginx/nginx.conf
 
 COPY ./tools/entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
