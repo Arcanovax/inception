@@ -20,5 +20,6 @@ https://blog.nginx.org/blog/9-tips-for-improving-wordpress-performance-with-ngin
 https://debian-facile.org/atelier:chantier:nginx-mariabd-php-multi-sites-dont-wordpress-plusieurs-versions-de-php
 https://www.ionos.com/digitalguide/hosting/blogs/wordpress-nginx/
 
-conf file 
+conf file
 https://nginx.org/en/docs/http/configuring_https_servers.html
+https://github.com/nginx/nginx/blob/master/conf/nginx.conf
