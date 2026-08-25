@@ -12,7 +12,7 @@ until mysql -h mariadb -u$DB_USER -p$DB_PASSWORD $DB_NAME -e "SELECT 1" > /dev/n
     sleep 2
 done
 
-echo "MariaDB is ready!"
+echo "MariaDB is ready"
 
 if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Creating a WordPress Configuration..."

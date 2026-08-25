@@ -1,3 +1,4 @@
+
 FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y nginx openssl curl
@@ -7,7 +8,7 @@ RUN mkdir -p /etc/nginx/ssl && \
     -newkey rsa:2048 \
     -keyout /etc/nginx/ssl/mthetcha.42.fr.key \
     -out /etc/nginx/ssl/mthetcha.42.fr.crt \
-    -subj "/C=FR/ST=Auvergne-Rhone-Alpes/L=Lyon/O=42/CN=mthetcha.42.fr"
+    -subj "/C=FR/ST=Auvergne-Rhone-Alpes/L=Lyon/O=42/OU=mthetcha/CN=mthetcha.42.fr"
 
 RUN rm /etc/nginx/sites-enabled/default
 
