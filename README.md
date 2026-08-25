@@ -23,3 +23,7 @@ https://www.ionos.com/digitalguide/hosting/blogs/wordpress-nginx/
 conf file
 https://nginx.org/en/docs/http/configuring_https_servers.html
 https://github.com/nginx/nginx/blob/master/conf/nginx.conf
+
+
+config users
+https://developer.wordpress.org/cli/commands/user/create/

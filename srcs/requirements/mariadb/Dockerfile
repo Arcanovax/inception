@@ -1,7 +1,8 @@
-FROM debian:12.15
+FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y mariadb-server mariadb-client
-COPY ./tools/entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
 
-CMD ["sh", "/entrypoint.sh"]
+COPY ./tools/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

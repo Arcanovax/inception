@@ -1,4 +1,4 @@
-FROM debian:12.15
+FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y nginx openssl curl
 
@@ -13,7 +13,7 @@ RUN rm /etc/nginx/sites-enabled/default
 
 COPY ./tools/nginx.conf /etc/nginx/nginx.conf
 
-COPY ./tools/entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY ./tools/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-CMD ["sh", "entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

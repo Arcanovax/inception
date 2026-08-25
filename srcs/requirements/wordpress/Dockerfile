@@ -1,4 +1,4 @@
-FROM debian:12.15
+FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y \
     php8.2-fpm \
@@ -31,7 +31,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN echo "listen = 0.0.0.0:9000" >> /etc/php/8.2/fpm/pool.d/www.conf \
     && echo "clear_env = no" >> /etc/php/8.2/fpm/pool.d/www.conf
 
-COPY ./tools/entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY ./tools/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-CMD ["sh", "entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
