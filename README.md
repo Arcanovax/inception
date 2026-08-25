@@ -27,3 +27,7 @@ https://github.com/nginx/nginx/blob/master/conf/nginx.conf
 
 config users
 https://developer.wordpress.org/cli/commands/user/create/
+
+adminer 
+https://www.adminer.org
+https://www.php.net/manual/en/features.commandline.webserver.php
