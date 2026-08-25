@@ -60,6 +60,15 @@ services:
     networks:
       - inception
 
+  website:
+    build: ./requirements/website
+    container_name: website
+    restart: always
+    ports:
+      - "7000:7000"
+    networks:
+      - inception
+
 
 networks:
   inception:

@@ -31,3 +31,6 @@ https://developer.wordpress.org/cli/commands/user/create/
 adminer 
 https://www.adminer.org
 https://www.php.net/manual/en/features.commandline.webserver.php
+
+set up a website
+https://stackoverflow.com/questions/51016945/create-a-dockerfile-that-runs-a-python-http-server-to-display-an-html-file

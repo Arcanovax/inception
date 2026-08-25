@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matisse</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1.25rem; 
+        }
+
+        .profile-pic {
+            height: 16rem;
+            width: 16rem; 
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .top_name {
+            margin: 0 0.5rem;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        .name {
+            margin: 0;
+            font-size: 8rem;
+            line-height: 0.85;
+            font-weight: 500;
+        }
+
+        .description {
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 200;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        
+        <img src="profile.jpg" alt="Matisse" class="profile-pic"/>
+        
+        <div class="info-column">
+            
+            <p class="top_name">Hey ! I'm</p>
+            <h1 class="name">Matisse</h1>
+            <p class="description">Computer science student at 42 School</p>
+        </div>
+    </div>
+
+</body>
+</html>
