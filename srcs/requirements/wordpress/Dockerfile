@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     php8.2-mbstring \
     php8.2-zip \
     php8.2-intl \
+	php8.2-redis \
     mariadb-client \
     curl \
     wget \
@@ -26,7 +27,7 @@ RUN wget https://wordpress.org/latest.tar.gz \
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
-    && mv wp-cli.phar /usr/local/bin/wp 
+    && mv wp-cli.phar /usr/local/bin/wp
 
 RUN echo "listen = 0.0.0.0:9000" >> /etc/php/8.2/fpm/pool.d/www.conf \
     && echo "clear_env = no" >> /etc/php/8.2/fpm/pool.d/www.conf

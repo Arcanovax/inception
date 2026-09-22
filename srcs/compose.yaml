@@ -21,6 +21,7 @@ services:
       - wordpress:/var/www/html
     depends_on:
       - mariadb
+      - redis
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - DB_NAME=${DB_NAME}
@@ -49,6 +50,17 @@ services:
     networks:
       - inception
 
+  ftpserver:
+    build: ./requirements/ftpserver
+    container_name: ftpserver
+    restart: always
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - inception
+
   adminer:
     build: ./requirements/adminer
     container_name: adminer
@@ -69,12 +81,21 @@ services:
     networks:
       - inception
 
+  lazydocker:
+    build: ./requirements/lazydocker
+    container_name: lazydocker
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - inception
+
   redis:
     build: ./requirements/redis
     container_name: redis
     restart: always
-    ports:
-      - "9000:9000"
     networks:
       - inception
 

@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN apt-get update && apt-get install -y php8.2-redis redis-server
+RUN apt-get update && apt-get install -y
 
 COPY ./tools/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

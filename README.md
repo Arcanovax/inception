@@ -28,9 +28,12 @@ https://github.com/nginx/nginx/blob/master/conf/nginx.conf
 config users
 https://developer.wordpress.org/cli/commands/user/create/
 
-adminer 
+adminer
 https://www.adminer.org
 https://www.php.net/manual/en/features.commandline.webserver.php
 
 set up a website
 https://stackoverflow.com/questions/51016945/create-a-dockerfile-that-runs-a-python-http-server-to-display-an-html-file
+
+install lazydocker
+https://blog.stephane-robert.info/docs/conteneurs/outils/lazydocker/
