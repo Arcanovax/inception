@@ -6,6 +6,4 @@ WORKDIR /var/www/html
 COPY index.html .
 COPY profile.jpg .
 
-EXPOSE 7000
-
 CMD ["python3", "-m", "http.server", "7000"]
