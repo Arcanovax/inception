@@ -48,7 +48,7 @@ services:
       - wordpress:/var/www/html
     networks:
       - inception
-  
+
   adminer:
     build: ./requirements/adminer
     container_name: adminer
@@ -66,6 +66,15 @@ services:
     restart: always
     ports:
       - "7000:7000"
+    networks:
+      - inception
+
+  redis:
+    build: ./requirements/redis
+    container_name: redis
+    restart: always
+    ports:
+      - "9000:9000"
     networks:
       - inception
 
