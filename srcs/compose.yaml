@@ -1,3 +1,4 @@
+
 services:
   mariadb:
     build: ./requirements/mariadb
@@ -56,6 +57,12 @@ services:
     restart: always
     depends_on:
       - wordpress
+    environment:
+      - FTP_USER=${FTP_USER}
+      - FTP_PASSWORD=${FTP_PASSWORD}
+    ports:
+      - "21:21"
+      - "30000-30005:30000-30005"
     volumes:
       - wordpress:/var/www/html
     networks:

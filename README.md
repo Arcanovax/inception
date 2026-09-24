@@ -37,3 +37,6 @@ https://stackoverflow.com/questions/51016945/create-a-dockerfile-that-runs-a-pyt
 
 install lazydocker
 https://blog.stephane-robert.info/docs/conteneurs/outils/lazydocker/
+
+ftp server
+https://oleks.ca/2024/12/07/installation-dun-serveur-ftp-sur-debian-12/
