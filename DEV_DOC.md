@@ -77,6 +77,11 @@ Lazydocker CLI:
 docker attach lazydocker
 ```
 
+Connect to FTP server
+```bash
+ftp mthetcha.42.fr
+```
+
 # Management
 
 The `Makefile` provides several commands to manage the Docker environment.

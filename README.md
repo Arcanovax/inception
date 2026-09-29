@@ -57,7 +57,7 @@ The difference is that a bridge network creates an isolated Docker network for t
 |---|---|
 | Provides network isolation | Container uses the host network directly |
 | Containers can communicate using Docker networking | Services share the host's network |
-| Better control over exposed services | Less network isolation | 
+| Better control over exposed services | Less network isolation |
 | Suitable for multi-container applications | Useful when direct host networking is required |
 
 This project uses a dedicated Docker bridge network:
@@ -152,6 +152,14 @@ Lazydocker can be accessed with:
 ```bash
 docker attach lazydocker
 ```
+
+### FTP Server
+
+Connect to FTP server
+```bash
+ftp mthetcha.42.fr
+```
+*Then use the login from the `.env`*
 
 ## Stop the infrastructure
 
