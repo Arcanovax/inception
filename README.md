@@ -224,5 +224,7 @@ make fclean
 <u>Ftp server installation:</u>
 - https://oleks.ca/2024/12/07/installation-dun-serveur-ftp-sur-debian-12/
 
+<u>Redis Cache installation:</u>
+- https://www.web-engine.fr/redis-wordpress-cache-objet-configuration/
 
 ## IA usage

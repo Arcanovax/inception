@@ -26,6 +26,14 @@ else
 	echo "WordPress configuration found"
 fi
 
+wp config set WP_REDIS_HOST redis --allow-root
+wp config set WP_REDIS_PORT 6379 --raw --allow-root
+wp config set WP_REDIS_DATABASE 0 --raw --allow-root
+wp config set WP_REDIS_TIMEOUT 1 --raw --allow-root
+wp config set WP_REDIS_READ_TIMEOUT 1 --raw --allow-root
+wp config set WP_CACHE true --raw --allow-root
+echo "Redis Cache has beed configured"
+
 if ! wp core is-installed --path=/var/www/html --allow-root; then
     echo "Installing WordPress..."
     wp core install \
@@ -44,6 +52,17 @@ if ! wp core is-installed --path=/var/www/html --allow-root; then
 else
 	echo "WordPress is already installed"
 fi
+
+if ! wp plugin is-installed redis-cache --allow-root; then
+    echo "Installing Redis Cache plugin..."
+    wp plugin install redis-cache --activate --allow-root
+else
+	echo "Redis Cache is already installed"
+fi
+
+wp plugin activate redis-cache --allow-root 2>/dev/null || true
+
+wp redis enable --allow-root || echo "Failed to enable Redis"
 
 echo "Starting WordPress..."
 exec /usr/sbin/php-fpm8.2 -F
