@@ -228,3 +228,8 @@ make fclean
 - https://www.web-engine.fr/redis-wordpress-cache-objet-configuration/
 
 ## IA usage
+
+- Explain the workings and roles of Docker, Docker Compose, and services.
+- Find out if my code follows Docker best practices.
+- Summarize and verify the documentation on certain web pages.
+- Use as a last resort for complex files, such as .conf files, to help me understand and clarify how certain lines work
