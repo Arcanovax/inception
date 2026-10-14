@@ -74,8 +74,6 @@ services:
     restart: always
     depends_on:
       - mariadb
-    ports:
-      - "8000:8000"
     networks:
       - inception
 
@@ -83,8 +81,6 @@ services:
     build: ./requirements/website
     container_name: website
     restart: always
-    ports:
-      - "7000:7000"
     networks:
       - inception
 
