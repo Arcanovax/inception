@@ -1,13 +1,28 @@
 VOLUMES = /home/mthetcha/data/mariadb /home/mthetcha/data/wordpress
+ENV_FILE = srcs/.env
+REQUIRED_VARS = DOMAIN_NAME MYSQL_USER \
+				DB_NAME DB_PASSWORD DB_USER \
+				WP_TITLE \
+				WP_ADMIN_USER WP_ADMIN_PASSWORD WP_ADMIN_EMAIL \
+				WP_USER WP_USER_PASSWORD WP_USER_EMAIL \
+				FTP_USER FTP_PASSWORD
 
-up: volumes
+default: up
+
+up: volumes check_env
 	docker compose -f srcs/compose.yaml up -d
 
-build: volumes
+build: volumes check_env
 	docker compose -f srcs/compose.yaml up --build -d
 
 volumes:
 	mkdir -p $(VOLUMES)
+
+check_env:
+	@test -f $(ENV_FILE) || { echo "No env file"; exit 1; }
+	@for var in $(REQUIRED_VARS); do \
+		grep -Eq "^$$var=.+" $(ENV_FILE) || { echo "$$var is not defined"; exit 1; }; \
+	done
 
 down :
 	docker compose -f ./srcs/compose.yaml down

@@ -227,6 +227,9 @@ make fclean
 <u>Redis Cache installation:</u>
 - https://www.web-engine.fr/redis-wordpress-cache-objet-configuration/
 
+<u>Makefile setup:</u>
+- https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/make/default-target.html
+
 ## IA usage
 
 - Explain the workings and roles of Docker, Docker Compose, and services.
