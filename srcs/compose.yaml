@@ -1,11 +1,13 @@
 
 services:
   mariadb:
+    image: mariadb:1.0
     build: ./requirements/mariadb
     container_name : mariadb
+    pull_policy: build
     restart: always
     volumes:
-      - mariadb:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     environment:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
@@ -15,11 +17,13 @@ services:
 
 
   wordpress:
+    image: wordpress:1.0
     build: ./requirements/wordpress
     container_name : wordpress
+    pull_policy: build
     restart: always
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
     depends_on:
       - mariadb
       - redis
@@ -39,21 +43,25 @@ services:
       - inception
 
   nginx:
+    image: nginx:1.0
     build: ./requirements/nginx
     container_name: nginx
+    pull_policy: build
     restart: always
     depends_on:
       - wordpress
     ports:
       - "443:443"
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
     networks:
       - inception
 
   ftpserver:
+    image: ftpserver:1.0
     build: ./requirements/ftpserver
     container_name: ftpserver
+    pull_policy: build
     restart: always
     depends_on:
       - wordpress
@@ -64,13 +72,15 @@ services:
       - "21:21"
       - "30000-30005:30000-30005"
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
     networks:
       - inception
 
   adminer:
+    image: adminer:1.0
     build: ./requirements/adminer
     container_name: adminer
+    pull_policy: build
     restart: always
     depends_on:
       - mariadb
@@ -78,15 +88,19 @@ services:
       - inception
 
   website:
+    image: website:1.0
     build: ./requirements/website
     container_name: website
+    pull_policy: build
     restart: always
     networks:
       - inception
 
   lazydocker:
+    image: lazydocker:1.0
     build: ./requirements/lazydocker
     container_name: lazydocker
+    pull_policy: build
     restart: always
     stdin_open: true
     tty: true
@@ -96,8 +110,10 @@ services:
       - inception
 
   redis:
+    image: redis:1.0
     build: ./requirements/redis
     container_name: redis
+    pull_policy: build
     restart: always
     networks:
       - inception
@@ -109,16 +125,16 @@ networks:
 
 
 volumes:
-  mariadb:
-    name: mariadb
+  mariadb_data:
+    name: mariadb_data
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /home/mthetcha/data/mariadb
 
-  wordpress:
-    name: wordpress
+  wordpress_data:
+    name: wordpress_data
     driver: local
     driver_opts:
       type: none
