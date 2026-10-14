@@ -90,7 +90,7 @@ This allows, for example, WordPress to communicate with MariaDB via the Docker n
 | Easier to manage portably | Gives precise control over file location |
 | Good for persistent application data | Useful when host-side access to files is required |
 
-The project uses **2 Docker volumes configured with bind-style driver options** to store persistent data at known locations on the host.
+In the project, I used named volumes with `driver_opts`, to retain Docker management while controlling the location of the data on the host.
 
 For this project, WordPress and MariaDB data are stored in these directories:
 
