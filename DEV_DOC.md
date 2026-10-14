@@ -64,12 +64,12 @@ Once the containers are running, the following services are available:
 
 Adminer:
 ```bash
-mthetcha.42.fr:8000
+mthetcha.42.fr/adminer
 ```
 
 Static website:
 ```bash
-mthetcha.42.fr:7000
+mthetcha.42.fr/portfolio
 ```
 
 Lazydocker CLI:

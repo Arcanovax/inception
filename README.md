@@ -76,8 +76,6 @@ In this project, the exposed ports include:
 
 - `443` for HTTPS;
 - `21` and `30000-30005` for FTP;
-- `8000` for Adminer;
-- `7000` for the static website.
 
 This allows, for example, WordPress to communicate with MariaDB via the Docker network without directly exposing the MariaDB database port to the host.
 
@@ -136,13 +134,13 @@ https://mthetcha.42.fr
 ### Adminer
 
 ```text
-http://mthetcha.42.fr:8000
+https://mthetcha.42.fr/adminer
 ```
 
 ### Static website
 
 ```text
-http://mthetcha.42.fr:7000
+https://mthetcha.42.fr/portfolio
 ```
 
 ### Lazydocker
